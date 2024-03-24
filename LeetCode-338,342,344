@@ -1,0 +1,42 @@
+class Solution {
+/*
+338.比特位计数
+给你一个整数 n ，对于 0 <= i <= n 中的每个 i ，计算其二进制表示中 1 的个数 ，返回一个长度为 n + 1 的数组 ans 作为答案。
+*/
+  public int[] countBits(int n) {
+    int[] bits = new int[n + 1];
+    for(int i = 1; i <= n; i++) {
+      bits[i] = bits[i & (i - 1)] + 1;
+    }
+    return bits;
+  }
+
+/*
+342.4的幂
+给定一个整数，写一个函数来判断它是否是 4 的幂次方。如果是，返回 true ；否则，返回 false 。
+整数 n 是 4 的幂次方需满足：存在整数 x 使得 n == 4x
+*/
+  public boolean isPowerOfFour(int n) {
+    while(n > 0 && n % 4 == 0) {
+      n /= 4;
+    }
+    return n == 1;
+  }
+
+/*
+344.反转字符串
+编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 s 的形式给出。
+不要给另外的数组分配额外的空间，你必须原地修改输入数组、使用 O(1) 的额外空间解决这一问题。
+*/
+  public void reverseString(char[] s) {
+    int left = 0;
+    int right = s.length - 1;
+    while(left < right) {
+      char temp = s[left];
+      s[left] = s[right];
+      s[right] = temp;
+      left++;
+      right--;
+    }
+  }
+}
